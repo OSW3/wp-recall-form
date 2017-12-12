@@ -1,0 +1,140 @@
+{
+    "assets": {
+        "styles": [{
+            "name": "Bootstrap4",
+            "path": "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        },{
+            "name": "jQuery.Recall",
+            "path": "jquery.recall"
+        }],
+        "scripts": [{
+                "name": "jQuery",
+                "path": "https://code.jquery.com/jquery-3.2.1.min.js"
+            },{
+                "name": "PopperJS",
+                "path": "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"
+            },{
+                "name": "Bootstrap4",
+                "path": "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js",
+                "dependencies": ["jQuery", "PopperJS"]
+            },{
+                "name": "jQuery.Recall",
+                "path": "jquery.recall",
+                "dependencies": "jQuery"
+        }]
+    },
+
+    "register": {
+        "settings": {
+            "menus": {
+                "admin": true,
+                "icon": "image:ppm.png"
+            },
+            "sections": [{
+                "title": "__ Message de réponse",
+                "description": "__ Définissez les réponses retournées à l'utilisateur lors de sa demande de rappel.",
+                "schema": [{
+                    "key": "success_message",
+                    "label": "__ Success message",
+                    "type": "text",
+                    "default": "__ Votre demande de rappel à été enregistrée."
+                },{
+                    "key": "error_message",
+                    "label": "__ Error message",
+                    "type": "text",
+                    "default": "__ L'enregistrement de la demande de rappel à échouée."
+                }]
+            },{
+                "title": "__ Notification",
+                "description": "__ Adresses e-mail des destinataires des notifications de demandes de rappel.",
+                "schema": [{
+                    "key": "notification_to",
+                    "label": "__ Recipients of notifications",
+                    "type": "textarea",
+                    "helper": "__ List of recipients of new message notifications.",
+                    "default": "[[admin_email]]"
+                }]
+            }]
+        },
+        
+        "posts": [{
+            "type": "recall",
+            "label": "__ Demandes de rappel",
+            "menu_icon": "dashicons-welcome-add-page",
+            "capabilities": {
+                "create_posts": false
+            },
+            "map_meta_cap": true,
+            "supports": [],
+            "admin_columns": [{
+                "label": "My custom field",
+                "data": ["at", "date", "time"],
+                "sortable": true
+            },{
+                "key": "date",
+                "public": false
+            },{
+                "key": "title",
+                "public": true
+            }],
+
+            "metas": [{
+                "title": "Text fields demo",
+                "schema": [{
+                    "key": "recall_firstname",
+                    "label": "__ Firstname",
+                    "type": "text",
+                    "required": true
+                },{
+                    "key": "recall_lastname",
+                    "label": "__ Lastname",
+                    "type": "text",
+                    "required": true
+                },{
+                    "key": "recall_prefix",
+                    "label": "__ Prefix",
+                    "type": "text"
+                },{
+                    "key": "recall_phone",
+                    "label": "__ Phone number",
+                    "type": "tel",
+                    "required": true
+                },{
+                    "key": "recall_date",
+                    "label": "__ Date",
+                    "type": "date",
+                    "required": true
+                },{
+                    "key": "recall_time",
+                    "label": "__ Time",
+                    "type": "time",
+                    "required": true
+                },{
+                    "key": "recall_isRead",
+                    "type": "hidden",
+                    "value": 0,
+                    "disabled": true
+                },{
+                    "key": "recall_message",
+                    "label": "__ Comment",
+                    "type": "textarea"
+                }]
+            }],
+            "widget": {
+                "label": "__ Recall",
+                "type": "view",
+                "view": "summary"
+            }
+        }]
+
+    },
+
+    "hooks": {
+        "RecallForm_Hook_AjaxUrl": "wp_enqueue_scripts"
+    },
+    "shortcodes": {
+        // "PleasePlugMe_ShorcodeExemple_Name": "PleasePlugMe_ShorcodeExemple_Function"
+    }
+
+
+}
