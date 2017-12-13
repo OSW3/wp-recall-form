@@ -42,7 +42,7 @@
                     "key": "error_message",
                     "label": "__ Error message",
                     "type": "text",
-                    "default": "__ L'enregistrement de la demande de rappel à échouée."
+                    "default": "__ L enregistrement de la demande de rappel à échouée."
                 }]
             },{
                 "title": "__ Notification",
