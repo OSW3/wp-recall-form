@@ -31,27 +31,27 @@
                 "icon": "image:ppm.png"
             },
             "sections": [{
-                "title": "__ Message de réponse",
-                "description": "__ Définissez les réponses retournées à l'utilisateur lors de sa demande de rappel.",
+                "title": "Response message",
+                "description": "Define the responses returned to the user when their callback request is sended.",
                 "schema": [{
                     "key": "success_message",
-                    "label": "__ Success message",
+                    "label": "Success message",
                     "type": "text",
-                    "default": "__ Votre demande de rappel à été enregistrée."
+                    "default": "Your recall request has been saved."
                 },{
                     "key": "error_message",
-                    "label": "__ Error message",
+                    "label": "Error message",
                     "type": "text",
-                    "default": "__ L'enregistrement de la demande de rappel à échouée."
+                    "default": "The registration of the recall request has been failed."
                 }]
             },{
-                "title": "__ Notification",
-                "description": "__ Adresses e-mail des destinataires des notifications de demandes de rappel.",
+                "title": "Notification",
+                "description": "E-mail address of recipients of recall request notifications.",
                 "schema": [{
                     "key": "notification_to",
-                    "label": "__ Recipients of notifications",
+                    "label": "Recipients of notifications",
                     "type": "textarea",
-                    "helper": "__ List of recipients of new message notifications.",
+                    "helper": "List of recipients of notifications. Add one email address by line.",
                     "default": "[[admin_email]]"
                 }]
             }]
@@ -59,16 +59,30 @@
         
         "posts": [{
             "type": "recall",
-            "label": "__ Demandes de rappel",
+            "label": "Callback requests",
             "menu_icon": "dashicons-welcome-add-page",
             "capabilities": {
                 "create_posts": false
             },
             "map_meta_cap": true,
+
+            "labels": {
+                "not_found": "There is no new request.",
+                "edit_item": "Callback request"
+            },
+
             "supports": [],
             "admin_columns": [{
-                "label": "My custom field",
-                "data": ["at", "date", "time"],
+                "label": "Is Read",
+                "data": "recall_isRead",
+                "sortable": true
+            },{
+                "label": "Phone number",
+                "data": "recall_phone",
+                "sortable": true
+            },{
+                "label": "Date",
+                "data": [" at ", "recall_date", "recall_time"],
                 "sortable": true
             },{
                 "key": "date",
@@ -77,37 +91,40 @@
                 "key": "title",
                 "public": true
             }],
-
+            
+            "remove_admin_row_actions": ["view", "quick-edit", "edit"],
+            "view": true,
+            
             "metas": [{
                 "title": "Text fields demo",
                 "schema": [{
                     "key": "recall_firstname",
-                    "label": "__ Firstname",
+                    "label": "Firstname",
                     "type": "text",
                     "required": true
                 },{
                     "key": "recall_lastname",
-                    "label": "__ Lastname",
+                    "label": "Lastname",
                     "type": "text",
                     "required": true
                 },{
                     "key": "recall_prefix",
-                    "label": "__ Prefix",
+                    "label": "Phone Prefix",
                     "type": "text"
                 },{
                     "key": "recall_phone",
-                    "label": "__ Phone number",
+                    "label": "Phone number",
                     "type": "tel",
                     "required": true
                 },{
                     "key": "recall_date",
-                    "label": "__ Date",
-                    "type": "date",
+                    "label": "Date",
+                    "type": "choices",
                     "required": true
                 },{
                     "key": "recall_time",
-                    "label": "__ Time",
-                    "type": "time",
+                    "label": "Time",
+                    "type": "choices",
                     "required": true
                 },{
                     "key": "recall_isRead",
@@ -116,12 +133,12 @@
                     "disabled": true
                 },{
                     "key": "recall_message",
-                    "label": "__ Comment",
+                    "label": "Comment",
                     "type": "textarea"
                 }]
             }],
             "widget": {
-                "label": "__ Recall",
+                "label": "Callback requests",
                 "type": "view",
                 "view": "summary"
             }
@@ -131,9 +148,6 @@
 
     "hooks": {
         "RecallForm_Hook_AjaxUrl": "wp_enqueue_scripts"
-    },
-    "shortcodes": {
-        // "PleasePlugMe_ShorcodeExemple_Name": "PleasePlugMe_ShorcodeExemple_Function"
     }
 
 

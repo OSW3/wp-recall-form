@@ -16,25 +16,13 @@ $query = RecallForm_GetNewMessages();
         <li class="widget-list-item wp-clearfix">
             <div class="item-header wp-clearfix">
                 <div class="sender">
-                    <?= get_post_meta($post->ID, 'recall_firstname', true) ?> <?= get_post_meta($post->ID, 'recall_lastname', true) ?> <small>(<?= get_post_meta($post->ID, 'recall_phone', true) ?>)</small>
+                    <a href="<?= $message_link ?>">
+                        <?= get_post_meta($post->ID, 'recall_firstname', true) ?> <?= get_post_meta($post->ID, 'recall_lastname', true) ?> <small>(<?= get_post_meta($post->ID, 'recall_phone', true) ?>)</small>
+                    </a>
                 </div>
                 <div class="date">
                     <?= PPM::date("D d M Y H:i", $post->post_date) ?>
                 </div>
-            </div>
-            <div class="item-content">
-                <a href="<?= $message_link ?>">
-                    <?php
-                        $message = get_post_meta($post->ID, 'message', true);
-                        $message_length = strlen($message);
-
-                        if ($message_length > 200)
-                        {
-                            $message = substr($message, 0, 200);
-                        }
-                    ?>
-                    <?= $message ?>
-                </a>
             </div>
         </li>
     <?php endforeach; ?>

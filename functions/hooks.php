@@ -91,6 +91,21 @@ if (!function_exists('RecallForm_Submission'))
                 $title = $responses['recall_firstname']->value." ";
                 $title.= $responses['recall_lastname']->value;
 
+
+                // Format Hours
+                $hours = $responses['recall_time']->value;
+                list($hour_a,$hour_b) = explode(",", $hours);
+
+                $hour_a = str_pad($hour_a, 4, "0", STR_PAD_LEFT); 
+                $hour_b = str_pad($hour_b, 4, "0", STR_PAD_LEFT); 
+
+                $hour_a = substr($hour_a,0,2).":".substr($hour_a,2,2);
+                $hour_b = substr($hour_b,0,2).":".substr($hour_b,2,2);
+
+                $hours = $hour_a." - ".$hour_b;
+
+
+                // Save data
                 $post_id = wp_insert_post([
                     'post_title'    => wp_strip_all_tags( $title ),
                     'post_content'  => "",
@@ -104,7 +119,7 @@ if (!function_exists('RecallForm_Submission'))
                 update_post_meta( $post_id, "recall_prefix", $responses['recall_prefix']->value );
                 update_post_meta( $post_id, "recall_phone", $responses['recall_phone']->value );
                 update_post_meta( $post_id, "recall_date", $responses['recall_date']->value );
-                update_post_meta( $post_id, "recall_time", $responses['recall_time']->value );
+                update_post_meta( $post_id, "recall_time", $hours );
                 update_post_meta( $post_id, "recall_message", $responses['recall_message']->value );
                 update_post_meta( $post_id, "recall_isRead", "0" );
             }
@@ -129,7 +144,7 @@ if (!function_exists('RecallForm_Submission'))
             // Body
             $body = "<h3>Demande de rappel</h3>"."<br>";
             $body.= $responses['recall_firstname']->value." ".$responses['recall_lastname']->value."<br>";
-            $body.= $responses['recall_date']->value." - ".$responses['recall_time']->value."<br>";
+            $body.= $responses['recall_date']->value." - ".$hours."<br>";
             $body.= $responses['recall_phone']->value."<br>";
             $body.= "<br>";
             $body.= $responses['recall_message']->value."<br>";

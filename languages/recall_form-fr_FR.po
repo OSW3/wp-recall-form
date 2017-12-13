@@ -1,0 +1,116 @@
+# Translation of Plugins - Recall in French (France)
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-12-01 02:07+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Language-Team: http://osw3.net\n"
+"Language: fr\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+
+
+# ------------------------------------------------------------------------------
+
+
+#: Menu custom post
+msgid "Callback requests"
+msgstr "Demandes de rappel"
+msgid "Callback request"
+msgstr "Demande de rappel"
+
+
+# ------------------------------------------------------------------------------
+
+
+#: Custom Posts : Empty list
+msgid "There is no new request."
+msgstr "Il n'y à aucune nouvelle demande."
+
+#: Custom Posts : Column : Is Read
+msgid "Is Read"
+msgstr "Lu"
+
+#: Custom Posts : Column : Firstname
+msgid "Firstname"
+msgstr "Prénom"
+
+#: Custom Posts : Column : Lastname
+msgid "Lastname"
+msgstr "NOM"
+
+#: Custom Posts : Column : Phone Prefix
+msgid "Phone Prefix"
+msgstr "Index téléphonique"
+
+#: Custom Posts : Column : Phone number
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: Custom Posts : Column : Date
+msgid "Date"
+msgstr "Date"
+
+#: Custom Posts : Column : Time
+msgid "Time"
+msgstr "Heure"
+
+#: Custom Posts : Column : Comment
+msgid "Comment"
+msgstr "Message"
+
+
+# ------------------------------------------------------------------------------
+
+# Section 1
+
+#: Settings : Section 1 : Title
+msgid "Response message"
+msgstr "Message de réponse"
+
+#: Settings : Section 1 : Description
+msgid "Define the responses returned to the user when their callback request is sended."
+msgstr "Définissez les réponses retournées à l'utilisateur lorsque sa demande de rappel est enoyée."
+
+
+
+#: Settings : Section 1 : Success message label
+msgid "Success message"
+msgstr "Message de réussite"
+
+#: Settings : Section 1 : Success message default
+msgid "Your recall request has been saved."
+msgstr "Votre demande de rappel à été enregistrée."
+
+
+
+#: Settings : Section 1 : Error message label
+msgid "Error message"
+msgstr "Message d'erreur"
+
+#: Settings : Section 1 : Error message default
+msgid "The registration of the recall request has been failed."
+msgstr "L'enregistrement de la demande de rappel a échoué."
+
+
+
+# Section 2
+
+#: Settings : Section 2 (Notification) : Title
+msgid "Notification"
+msgstr "Notification"
+
+#: Settings : Section 2 (Notification) : Description
+msgid "E-mail address of recipients of recall request notifications."
+msgstr "Adresses e-mail des destinataires des notifications de demandes de rappel."
+
+
+#: Settings : Section 2 (Notification) : Subject label
+msgid "Recipients of notifications"
+msgstr "Destinataires des notifications"
+
+#: Settings : Section 2 (Notification) : Subject helper
+msgid "List of recipients of notifications. Add one email address by line."
+msgstr "Liste des destinataires des notifications Ajoutez une adresse e-mail par ligne."
