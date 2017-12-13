@@ -549,7 +549,7 @@ if (!class_exists('PPM_FormType'))
                 
                 if (is_string($value))
                 {
-                    $value = addslashes(__($value, $this->config->Namespace ));
+                    $value = __($value, $this->config->Namespace );
                 }
             }
             

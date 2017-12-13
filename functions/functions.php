@@ -13,7 +13,7 @@ if (!function_exists('RecallForm_GetNewMessages'))
     function RecallForm_GetNewMessages()
     {
         return new WP_Query([
-            'post_type' => 'recal',
+            'post_type' => 'recall',
 
             // 'meta_query' => [
             //     'relation' => 'OR',

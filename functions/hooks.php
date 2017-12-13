@@ -135,13 +135,13 @@ if (!function_exists('RecallForm_Submission'))
             $body.= $responses['recall_message']->value."<br>";
 
             // Send
-            // $to = explode("\n", $options['notification_to']);
-            // foreach ($to as $key => $value) 
-            // {
-            //     $to[$key] = preg_replace("/\[\[admin_email\]\]/", get_option('admin_email'), $value);
-            //     wp_mail($to[$key], $subject, $body, $headers);
-            // }
-            wp_mail("hello@osw3.net", $subject, $body, $headers);
+            $to = explode("\n", $options['notification_to']);
+            foreach ($to as $key => $value) 
+            {
+                $to[$key] = preg_replace("/\[\[admin_email\]\]/", get_option('admin_email'), $value);
+                wp_mail($to[$key], $subject, $body, $headers);
+            }
+            // wp_mail("hello@osw3.net", $subject, $body, $headers);
         }
 
 
