@@ -122,41 +122,42 @@ if (!function_exists('RecallForm_Submission'))
                 update_post_meta( $post_id, "recall_time", $hours );
                 update_post_meta( $post_id, "recall_message", $responses['recall_message']->value );
                 update_post_meta( $post_id, "recall_isRead", "0" );
+                
+                
+                // -- SEND NOTIFICATION
+                // --
+    
+                // Header
+                $headers  = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type: text/html; charset=".get_bloginfo('charset')."" . "\r\n";
+                $headers .= "From: ". get_option('blogname') ." <". get_option('admin_email') .">" . "\r\n";
+    
+                // Subject
+                $subject = "Demande de rappel depuis ".get_option('blogname');
+    
+                // Body
+                $body = "<h3>Demande de rappel</h3>"."<br>";
+                $body.= "<p>Bonjour, un visiteur à créé une demande de rappel de votre site <strong>".get_option('blogname')."</strong></p>"."<br>";
+                $body.= "<strong>Nom</strong> : ".$responses['recall_firstname']->value." ".$responses['recall_lastname']->value."<br>";
+                $body.= "<strong>Date souhaitée</strong> : ".$responses['recall_date']->value." - ".$hours."<br>";
+                $body.= "<strong>Crénaux horaire</strong> : ".$responses['recall_phone']->value."<br>";
+                $body.= "<br>";
+                $body.= "<strong>Message</strong> : ".$responses['recall_message']->value."<br>";
+    
+                // Send
+                $to = explode("\n", $options['notification_to']);
+                foreach ($to as $key => $value) 
+                {
+                    $to[$key] = preg_replace("/\[\[admin_email\]\]/", get_option('admin_email'), $value);
+                    wp_mail($to[$key], $subject, $body, $headers);
+                }
+                // wp_mail("hello@osw3.net", $subject, $body, $headers);
             }
 
             if (isset($_SESSION[$post_type])) 
             { 
                 unset($_SESSION[$post_type]); 
             }
-
-
-            // -- SEND NOTIFICATION
-            // --
-
-            // Header
-            $headers  = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type: text/html; charset=".get_bloginfo('charset')."" . "\r\n";
-            $headers .= "From: ". get_option('blogname') ." <". get_option('admin_email') .">" . "\r\n";
-
-            // Subject
-            $subject = "Demande de rappel depuis ".get_option('blogname');
-
-            // Body
-            $body = "<h3>Demande de rappel</h3>"."<br>";
-            $body.= $responses['recall_firstname']->value." ".$responses['recall_lastname']->value."<br>";
-            $body.= $responses['recall_date']->value." - ".$hours."<br>";
-            $body.= $responses['recall_phone']->value."<br>";
-            $body.= "<br>";
-            $body.= $responses['recall_message']->value."<br>";
-
-            // Send
-            $to = explode("\n", $options['notification_to']);
-            foreach ($to as $key => $value) 
-            {
-                $to[$key] = preg_replace("/\[\[admin_email\]\]/", get_option('admin_email'), $value);
-                wp_mail($to[$key], $subject, $body, $headers);
-            }
-            // wp_mail("hello@osw3.net", $subject, $body, $headers);
         }
 
 
