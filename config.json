@@ -61,9 +61,9 @@
             "type": "recall",
             "label": "Callback requests",
             "menu_icon": "dashicons-welcome-add-page",
-            "capabilities": {
-                "create_posts": false
-            },
+            // "capabilities": {
+            //     "create_posts": false
+            // },
             "map_meta_cap": true,
 
             "labels": {
@@ -71,7 +71,9 @@
                 "edit_item": "Callback request"
             },
 
-            "supports": [],
+            // "supports": [],
+            "supports": ["title", "editor"],
+            
             "admin_columns": [{
                 "label": "Is Read",
                 "data": "recall_isRead",
