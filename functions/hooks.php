@@ -139,8 +139,9 @@ if (!function_exists('RecallForm_Submission'))
                 $body = "<h3>Demande de rappel</h3>"."<br>";
                 $body.= "<p>Bonjour, un visiteur à créé une demande de rappel de votre site <strong>".get_option('blogname')."</strong></p>"."<br>";
                 $body.= "<strong>Nom</strong> : ".$responses['recall_firstname']->value." ".$responses['recall_lastname']->value."<br>";
-                $body.= "<strong>Date souhaitée</strong> : ".$responses['recall_date']->value." - ".$hours."<br>";
-                $body.= "<strong>Crénaux horaire</strong> : ".$responses['recall_phone']->value."<br>";
+                $body.= "<strong>Date souhaitée</strong> : ".$responses['recall_date']->value."<br>";
+                $body.= "<strong>Crénaux horaire</strong> : ".$hours."<br>";
+                $body.= "<strong>Numéro de rappel</strong> : ".$responses['recall_phone']->value."<br>";
                 $body.= "<br>";
                 $body.= "<strong>Message</strong> : ".$responses['recall_message']->value."<br>";
     
