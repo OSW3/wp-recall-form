@@ -93,7 +93,7 @@
             }],
             
             "remove_admin_row_actions": ["view", "quick-edit", "edit"],
-            "view": true,
+            // "view": true,
             
             "metas": [{
                 "title": "Text fields demo",
