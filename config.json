@@ -61,9 +61,9 @@
             "type": "recall",
             "label": "Callback requests",
             "menu_icon": "dashicons-welcome-add-page",
-            // "capabilities": {
-            //     "create_posts": false
-            // },
+            "capabilities": {
+                "create_posts": false
+            },
             "map_meta_cap": true,
 
             "labels": {
@@ -71,8 +71,7 @@
                 "edit_item": "Callback request"
             },
 
-            // "supports": [],
-            "supports": ["title", "editor"],
+            "supports": [],
             
             "admin_columns": [{
                 "label": "Is Read",
@@ -95,7 +94,7 @@
             }],
             
             "remove_admin_row_actions": ["view", "quick-edit", "edit"],
-            // "view": true,
+            "view": true,
             
             "metas": [{
                 "title": "Text fields demo",
